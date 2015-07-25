@@ -1,5 +1,5 @@
 #!/usr/bin/Rscript --vanilla
-#' library_scanner.r
+#' library_calls.r
 #'
 #' summarize installed libraries and libraries actually used.
 #'

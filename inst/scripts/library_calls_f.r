@@ -1,3 +1,17 @@
+#!/usr/bin/Rscript --vanilla
+#' library_calls_f.r
+#'
+#' summarize installed libraries and libraries actually used.
+#'
+#' This is the a modified version of library_calls.r giving the same output
+#' using functions.
+#' 
+#' @author Dominik Cullmann, <dominik.cullmann@@forst.bwl.de>
+#' @section Version $Id: df44ece5ae86fc31458bb3f1b93d030f8a7a3e76 $
+#' @docType data
+#' @name A Header for
+NULL
+# ROXYGEN_STOP
 clean_names <- function(v, string) {
     in_invocation <- gsub(paste0(".*", string, "\\((.*)\\).*"), "\\1", v)
     cleaned_combine <- gsub("c\\(", "", gsub("\\)", "",  in_invocation))
