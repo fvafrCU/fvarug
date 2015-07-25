@@ -1,0 +1,7 @@
+*tar.gz
+*swp
+sedscr
+tmp_*
+Makefile
+*Rcheck
+package_tools/
