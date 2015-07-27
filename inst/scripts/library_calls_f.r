@@ -164,7 +164,7 @@ summary.object <- function(object, ...) {
 #' @return invisibly NULL
 # @examples
 # plot(get_package_list())
-plot.x <- function(x, ...) {
+plot.package_list <- function(x, ...) {
     op <- par(mar = c(10,4,4,2) + 0.1)
     plot(x[["package_calls"]],
          col=rainbow(length(levels(x[["package_calls"]]))),
