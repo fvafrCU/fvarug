@@ -4,3 +4,4 @@
 Makefile
 configure
 tmp_.*
+buildignore_*
