@@ -16,9 +16,8 @@ lapply(binPaths, function(path) {
   dir.create(path, recursive = TRUE)
 })
 
-tar_ball <- "fvarug_0.0-2.tar.gz"
-file.copy(tar_ball, file.path(contribDir, tar_ball)
-)
+tar_ball <- "fvarug_0.0-3.tar.gz"
+file.copy(tar_ball, file.path(contribDir, tar_ball))
 
 tools::write_PACKAGES(contribDir, type = "source")
 lapply(binPaths, function(path) {
@@ -26,7 +25,8 @@ lapply(binPaths, function(path) {
 })
 
 oldRepos <- getOption("repos")
-if(TRUE) {
+if (FALSE) {
+if (TRUE) {
     message("we need a web servers' config for that") 
     cranURI <- "http://10.33.50.43/lran/"
 } else {
@@ -34,5 +34,7 @@ if(TRUE) {
     cranURI <- paste("file://", normalizePath(localCRAN, winslash = "/"), sep = "")
 }
 options(repos = c( fvafrdebianCU = cranURI))
-
 install.packages("fvarug", type = "source")
+} else {
+install.packages("fvarug", repos = "http://10.33.50.43/lran/", type = "source")
+}
