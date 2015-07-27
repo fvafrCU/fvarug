@@ -1,7 +1,8 @@
 #!/usr/bin/Rscript --vanilla
+# ROXYGEN_START
 #' library_calls_f.r
 #'
-#' summarize installed libraries and libraries actually used.
+#' Summarize installed libraries and libraries actually used.
 #'
 #' This is the a modified version of library_calls.r giving the same output
 #' using functions.
@@ -74,6 +75,26 @@ get_package_calls <- function(files) {
     return(packages_loaded)
 }
 
+# ROXYGEN_START
+#' List packages 
+#' 
+#' List packages installed on your system and called from source files under a
+#' given path.
+#' 
+#' @author Dominik Cullmann, <dominik.cullmann@@forst.bwl.de>
+#' @section Version: $Id: 9bbb752b06d887f2115e37c3e9dadd89e40c49c7 $
+#' @param path The path to look for source files. If NULL, the user is queried
+#' to give a path.
+#' @param pattern A pattern defining source files.
+#' @return a named list containing
+#' \itemize{
+#' \item "path", a character vector giving the path, 
+#' \item "pattern", a character vector giving  the pattern, 
+#' \item "packages_installed", a character vector giving the packages installed,
+#' \item "package_calls", a factor giving the package calls.   
+#' }
+# @examples
+# get_package_list() 
 get_package_list <- function(path = NULL, 
                             pattern = "*\\.[rR]$") {
     path <- get_path(path)
@@ -92,44 +113,69 @@ get_package_list <- function(path = NULL,
     return(value)
 }
 
-summary.package_list <- function(package_list) {
+#' Summary function for objects of class "package_list"
+#' 
+#' Summarize the findings of \code{\link{get_package_list}}.
+#' 
+#' @author Dominik Cullmann, <dominik.cullmann@@forst.bwl.de>
+#' @section Version: $Id: 9bbb752b06d887f2115e37c3e9dadd89e40c49c7 $
+#' @param object an object of class object.
+#' @param ... argument passing for generic \code{\link{summary}} compablility.
+#' @return invisibly NULL
+# @examples
+# summary(get_object())
+summary.object <- function(object, ...) {
     hostname <- getElement(Sys.info(), "nodename")
     message("Packages installed on ", hostname, ":")
-    print(package_list[["packages_installed"]])
+    print(object[["packages_installed"]])
     message("Packages loaded by library() or require() in '",
-            package_list[["pattern"]], "'-files under ", 
-            package_list[["path"]], ":")
-    print(packages_loaded  <- levels(package_list[["package_calls"]]))
+            object[["pattern"]], "'-files under ", 
+            object[["path"]], ":")
+    print(packages_loaded  <- levels(object[["package_calls"]]))
     message("Packages loaded by library() or require()  in '",
-            package_list[["pattern"]], "'-files under ", 
-            package_list[["path"]], " but not installed ",
+            object[["pattern"]], "'-files under ", 
+            object[["path"]], " but not installed ",
             "on ", hostname, ":")
     print(packages_not_installed <- setdiff(packages_loaded,
-                                      package_list[["packages_installed"]]))
+                                      object[["packages_installed"]]))
     message("Packages installed on ", hostname, 
             " but never loaded by library() or require() in '",
-            package_list[["pattern"]], "'-files under ", 
-            package_list[["path"]], ":")
-    print(packages_never_loaded <- setdiff(package_list[["packages_installed"]],
+            object[["pattern"]], "'-files under ", 
+            object[["path"]], ":")
+    print(packages_never_loaded <- setdiff(object[["packages_installed"]],
                                      packages_loaded))
     message("Frequencies of packages loaded by library() or require() in '",
-            package_list[["pattern"]], "'-files under ", 
-            package_list[["path"]], ":")
-    print(summary(package_list[["package_calls"]]))
+            object[["pattern"]], "'-files under ", 
+            object[["path"]], ":")
+    print(summary(object[["package_calls"]]))
     return(invisible(NULL))
 }
 
-plot.package_list <- function(package_list) {
+#' Plot function for objects of class "package_list"
+#' 
+#' Plot the frequencies of packages called. 
+#' These frequencies are given by the
+#' \code{\link{get_package_list}}()[["package_calls"]].
+#' 
+#' @author Dominik Cullmann, <dominik.cullmann@@forst.bwl.de>
+#' @section Version: $Id: 9bbb752b06d887f2115e37c3e9dadd89e40c49c7 $
+#' @param x an object of class package_list.
+#' @param ... argument passing for generic \code{\link{plot}} compablility.
+#' @return invisibly NULL
+# @examples
+# plot(get_package_list())
+plot.x <- function(x, ...) {
     op <- par(mar = c(10,4,4,2) + 0.1)
-    plot(package_list[["package_calls"]],
-         col=rainbow(length(levels(package_list[["package_calls"]]))),
+    plot(x[["package_calls"]],
+         col=rainbow(length(levels(x[["package_calls"]]))),
          las=2,
-         main = paste0("'", package_list[["pattern"]], "'-files under ", 
-            package_list[["path"]], " on ", 
+         main = paste0("'", x[["pattern"]], "'-files under ", 
+            x[["path"]], " on ", 
             getElement(Sys.info(), "nodename")),
          ylab = "Frequencies of packages loaded by library() or require()")
     par(op)
 }
+# ROXYGEN_STOP
 
 #% body
 summary(get_package_list())
