@@ -24,8 +24,8 @@ get_path <- function(path) {
     # reset path for known hosts
     path <- switch(Sys.info()["nodename"],
                "f060" = ,
-               "h5" = "/home/nik/git_cyclops",
-               "fvafrdebianCU" = "/home/nik/git/cs",
+               "h5" = "/home/nik/git_cyclops/fvafrcu/coldr/",
+               "fvafrdebianCU" = "/home/nik/git/cs/fvafrcu/coldr/",
                "FVAFR-PC82053" = "p:/git/deploy/hochrechnungen",
                path
                )
@@ -107,7 +107,7 @@ get_package_list <- function(path = NULL,
 #' @param ... argument passing for generic \code{\link{summary}} compablility.
 #' @return invisibly NULL
 #' @examples
-#' \dontrun{summary(get_package_list())}
+#' summary(get_package_list())
 summary.package_list <- function(object, ...) {
     hostname <- getElement(Sys.info(), "nodename")
     message("Packages installed on ", hostname, ":")
@@ -147,7 +147,7 @@ summary.package_list <- function(object, ...) {
 #' @param ... argument passing for generic \code{\link{plot}} compablility.
 #' @return invisibly NULL
 #' @examples
-#' \dontrun{plot(get_package_list())}
+#' plot(get_package_list())
 plot.package_list <- function(x, ...) {
     op <- par(mar = c(10,4,4,2) + 0.1)
     plot(x[["package_calls"]],
