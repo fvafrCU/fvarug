@@ -1,4 +1,4 @@
 export(get_package_list)
-export(summary)
-export(plot)
+S3method(summary, package_list)
+S3method(plot, package_list)
 importFrom(graphics, plot)
