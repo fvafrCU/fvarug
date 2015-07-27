@@ -101,7 +101,6 @@ get_package_list <- function(path = NULL,
 #' 
 #' Summarize the findings of \code{\link{get_package_list}}.
 #' 
-#' @aliases summary
 #' @author Dominik Cullmann, <dominik.cullmann@@forst.bwl.de>
 #' @section Version: $Id: 9bbb752b06d887f2115e37c3e9dadd89e40c49c7 $
 #' @param object an object of class object.
@@ -142,7 +141,6 @@ summary.package_list <- function(object, ...) {
 #' These frequencies are given by the
 #' \code{\link{get_package_list}}()[["package_calls"]].
 #' 
-#' @aliases plot
 #' @author Dominik Cullmann, <dominik.cullmann@@forst.bwl.de>
 #' @section Version: $Id: 9bbb752b06d887f2115e37c3e9dadd89e40c49c7 $
 #' @param x an object of class package_list.
