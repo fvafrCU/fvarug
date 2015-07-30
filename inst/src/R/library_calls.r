@@ -9,7 +9,8 @@ clean_names <- function(v, string) {
 }
 
 exists_directory <- function(path) {
-    # somehow, dir.exists() seems gone, this is a workaround.
+    # dir.exists() is available for R 3.2.0 and later only. 
+    # This is a workaround for older versions of R.
     if (existsFunction("dir.exists")) {
         status <- dir.exists(path)
     } else {
