@@ -25,6 +25,7 @@ get_path <- function(path) {
     # reset path for known hosts
     path <- switch(Sys.info()["nodename"],
                "f060" = ,
+               "foobar" = ,
                "h5" = "/home/nik/git_cyclops/fvafrcu/coldr/",
                "fvafrdebianCU" = "/home/nik/git/cs/fvafrcu/coldr/",
                "FVAFR-PC82053" = "p:/git/deploy/hochrechnungen",

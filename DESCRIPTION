@@ -1,6 +1,6 @@
 Package: fvarug
 Type: Package
-Title: codes for the R User Group at the FVA BW
+Title: Codes for the R User Group at the FVA BW
 Version: 0.0-3
 Date: 2015-07-27
 Authors@R: c(person(given = c("Andreas", "Dominik"), family = "Cullmann",
