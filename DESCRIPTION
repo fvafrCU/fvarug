@@ -1,12 +1,12 @@
 Package: fvarug
 Type: Package
 Title: Codes for the R User Group at the FVA BW
-Version: 0.0-3
-Date: 2015-07-27
+Version: 0.0-4
+Date: 2015-08-11
 Authors@R: c(person(given = c("Andreas", "Dominik"), family = "Cullmann",
     email = "dominik.cullmann@forst.bwl.de", role = c("aut","cre"), 
     comment = NULL, first = NULL, last = NULL))
-Description: this is a collection of potentially highly volatile codes and
+Description: This is a collection of potentially highly volatile codes and
   functions used as examples at the R User Group at the Forstliche Versuchs- und
   Forschungsanstalt Baden-Wuerttemberg.
 License: file LICENSE
