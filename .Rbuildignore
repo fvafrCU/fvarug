@@ -1,7 +1,0 @@
-\.git.*
-.*\.tar\.gz
-.*\.Rcheck
-Makefile
-configure
-tmp_.*
-buildignore_*
